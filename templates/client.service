@@ -1,0 +1,12 @@
+[Unit]
+Description=Xray Service
+Documentation=https://github.com/XTLS/Xray-core
+After=network.target
+
+[Service]
+User=nobody
+ExecStart=/usr/local/bin/xray run --config /usr/local/etc/xray/config.toml
+
+[Install]
+WantedBy=multi-user.target
+

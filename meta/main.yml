@@ -1,0 +1,11 @@
+dependencies: []
+galaxy_info:
+  role_name: xray
+  description: Xray client/server on Debian/Ubuntu.
+  platforms:
+    - name: Ubuntu
+      versions:
+        - all
+    - name: Debian
+      versions:
+        - all

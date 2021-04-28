@@ -37,6 +37,7 @@
       [[outbounds.settings.vnext.users]]
         id = "{{ xray_uuid }}"
         flow = "xtls-rprx-direct"
+        encryption = "none"
 
   [outbounds.streamSettings]
     network = "tcp"

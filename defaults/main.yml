@@ -2,6 +2,9 @@
 # common
 xray_client: false
 xray_uuid: ""
+xray_update_config: true
+xray_server_addr: "v2.example.com"
+xray_server_ip: 4.3.2.1
 # server
 xray_port: 443
 xray_from_proxyproto: false

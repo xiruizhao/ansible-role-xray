@@ -57,7 +57,7 @@
     name: geerlingguy.certbot
 - name: ensure xray config dir
   file:
-    path: /etc/xray
+    path: /usr/local/etc/xray
     state: directory
 - name: get/generate xray_uuid
   when: xray_uuid == ""
@@ -83,14 +83,15 @@
         msg: "{{ xray_uuid }}"
 - name: ensure xray config
   template:
-    src: "templates/{{ 'client.toml' if xray_client else 'server.toml' }}"
-    dest: /etc/xray/config.toml
+    src: "{{ 'client.toml' if xray_client else 'server.toml' }}"
+    dest: /usr/local/etc/xray/config.toml
     owner: root
-    mode: 0660
+    mode: 0644
   notify: restart xray
+  when: xray_update_config
 - name: ensure xray.service
   copy:
-    src: "templates/{{ 'client.service' if xray_client else 'server.service' }}"
+    src: "{{ 'client.service' if xray_client else 'server.service' }}"
     dest: /etc/systemd/system/xray.service
     owner: root
     mode: 0664
@@ -99,5 +100,5 @@
   when: xray_generate_client_config
   delegate_to: localhost
   template:
-    src: "templates/client.toml"
+    src: "client.toml"
     dest: config.toml
